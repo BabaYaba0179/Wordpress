@@ -1,7 +1,3 @@
-add_action('admin_head', 'thai_check_notice');
-function thai_check_notice() {
-    echo '<style> div#flatsome-notice {display: none;}</style>';
-}
 /* Automagical updates */
 function wupdates_check_AwkAE( $transient ) {
     // First get the theme directory name (the theme slug - unique)
@@ -92,10 +88,15 @@ function wupdates_add_id_AwkAE( $ids = array() ) {
     return $ids;
 }
 add_filter( 'wupdates_gather_ids', 'wupdates_add_id_AwkAE', 10, 1 );
-add_filter( 'wupdates_gather_ids', 'wupdates_add_id_YL6Wd', 10, 1 );
-update_option( 'flatsome_wup_purchase_code', '26366b1c-0eb3-46fb-a196-33d20aa32c1d' );
-update_option( 'flatsome_wup_supported_until', '14.07.2027' );
-update_option( 'flatsome_wup_buyer', 'THANHTHAI.ORG' );
-update_option( 'flatsome_wup_sold_at', time() );
-delete_option( 'flatsome_wup_errors', '' );
+
+/* Active */
+update_option( get_template() . '_wup_purchase_code', 'ZqihUGpp-MjNr-oKco-hRit-PbJXLeLwwAqW' );
+update_option( get_template() . '_wup_supported_until', '01.07.2077' );
+update_option( get_template() . '_wup_buyer', 'Licensed' );
+update_option( get_template() . '_wup_sold_at', time() );
+delete_option( get_template() . '_wup_errors', '' );
 delete_option( 'flatsome_wupdates', '');
+add_action('admin_head', 'fs_check_notice');
+function fs_check_notice() {
+    echo '<style> div#flatsome-notice {display: none;}</style>';
+}
